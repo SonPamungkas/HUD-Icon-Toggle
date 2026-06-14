@@ -105,7 +105,7 @@ namespace HUDIconToggle
                 "cbo-", "cruise", "demolition bomb", "eyeball", "gbm-", "dt-1600",
                 "glide", "gpo-", "gs25", "guided shell", "hasm-", "irm-", "missile",
                 "mmr-", "nl-98", "pab-", "piledriver", "ram-45", "rocket", "shell", "glr-04",
-                "sam ir", "torpedo", "tusko", "tbm-", "vlm-", "warhead", "r6 longsword", "r9 stratolance" } ),
+                "sam ir", "torpedo", "tusko", "tbm-", "tbm", "vlm-", "warhead", "r6 longsword", "r9 stratolance" } ),
 
             ( IconCategory.Aircraft, new[] {
                 "a-19", "a-19c", "alkyon", "anvil", "attackhelo", "bomber", "cas1",

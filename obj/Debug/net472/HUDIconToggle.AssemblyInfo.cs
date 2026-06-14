@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("HUDIconToggle")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed9e3a32d0b63ef900df1be4fbf43b5932ddd95b")]
 [assembly: System.Reflection.AssemblyProductAttribute("HUDIconToggle")]
 [assembly: System.Reflection.AssemblyTitleAttribute("HUDIconToggle")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

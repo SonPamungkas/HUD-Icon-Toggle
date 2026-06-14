@@ -1,6 +1,6 @@
 is_global = true
 build_property.RootNamespace = HUDIconToggle
-build_property.ProjectDir = D:\Mods\Nuclear Option\HUDIconToggle_src\HUDIconToggle\
+build_property.ProjectDir = C:\Users\Tald\Documents\GitHub\HUD-Icon-Toggle\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.CsWinRTUseWindowsUIXamlProjections = false
