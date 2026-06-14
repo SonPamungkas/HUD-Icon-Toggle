@@ -1,5 +1,0 @@
-D:\Mods\Nuclear Option\HUDIconToggle_src\HUDIconToggle\obj\Release\netstandard2.0\HUDIconToggle.csproj.AssemblyReference.cache
-D:\Mods\Nuclear Option\HUDIconToggle_src\HUDIconToggle\obj\Release\netstandard2.0\HUDIconToggle.GeneratedMSBuildEditorConfig.editorconfig
-D:\Mods\Nuclear Option\HUDIconToggle_src\HUDIconToggle\obj\Release\netstandard2.0\HUDIconToggle.AssemblyInfoInputs.cache
-D:\Mods\Nuclear Option\HUDIconToggle_src\HUDIconToggle\obj\Release\netstandard2.0\HUDIconToggle.AssemblyInfo.cs
-D:\Mods\Nuclear Option\HUDIconToggle_src\HUDIconToggle\obj\Release\netstandard2.0\HUDIconToggle.csproj.CoreCompileInputs.cache
