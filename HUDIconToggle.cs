@@ -7,6 +7,7 @@ using HarmonyLib;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Rewired;
 
 namespace HUDIconToggle
 {
@@ -171,12 +172,32 @@ namespace HUDIconToggle
                     _grid[f, c] = new List<IconEntry>(32);
 
             BindConfig();
+            RegisterRewiredActions();
             BuildTypeMap();
             new Harmony(GUID).PatchAll();
             SceneManager.sceneLoaded += OnSceneLoaded;
 
             Log.LogInfo($"HUD Icon Toggle v{VERSION} loaded. (config v{CONFIG_VERSION})");
             LogKeybinds(); // outputs at LogDebug level — silent in normal BepInEx config
+        }
+
+        private void RegisterRewiredActions()
+        {
+            ExtraInputManager.LoadPendingActions();
+            ExtraInputManager.RegisterAction("ToggleAllIcons", Rewired.InputActionType.Button);
+            ExtraInputManager.RegisterAction("ToggleAllFriendlies", Rewired.InputActionType.Button);
+            ExtraInputManager.RegisterAction("ToggleAllEnemies", Rewired.InputActionType.Button);
+            ExtraInputManager.RegisterAction("ToggleAllNeutrals", Rewired.InputActionType.Button);
+            
+            string[] factions = { "Friendly", "Enemy", "Neutral" };
+            for (int f = 0; f < 3; f++)
+            {
+                for (int c = 0; c < 6; c++)
+                {
+                    IconCategory cat = (IconCategory)c;
+                    ExtraInputManager.RegisterAction($"Toggle{factions[f]}{cat}", Rewired.InputActionType.Button);
+                }
+            }
         }
 
         private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -345,17 +366,34 @@ namespace HUDIconToggle
                 _cleanupTimer = CLEANUP_INTERVAL;
             }
 
-            // Keybind checks — early return on first match to avoid double-firing.
-//            if (_keyDump.Value.IsDown())          { DumpIconLayer();                          return; }
-//            if (_keyDumpAllUnits.Value.IsDown())  { DumpAllUnitDefinitions();                 return; }
-            if (_keyMasterToggle.Value.IsDown())  { HandleMasterToggle();                     return; }
-            if (_keyToggleFriendly.Value.IsDown()){ HandleFactionToggle(IconFaction.Friendly); return; }
-            if (_keyToggleEnemy.Value.IsDown())   { HandleFactionToggle(IconFaction.Enemy);    return; }
-            if (_keyToggleNeutral.Value.IsDown()) { HandleFactionToggle(IconFaction.Neutral);  return; }
+            // Prevent toggle input when in chat
+            bool inChat = false;
+            try { inChat = CursorManager.GetFlag(CursorFlags.Chat); } catch {}
+            if (inChat) return;
 
+            Rewired.Player localPlayer = null;
+            if (ExtraInputManager.RewiredInitialized)
+            {
+                localPlayer = Rewired.ReInput.players.GetPlayer(0);
+            }
+
+            bool CheckToggleDown(ConfigEntry<KeyboardShortcut> shortcut, string actionName)
+            {
+                if (shortcut.Value.IsDown()) return true;
+                if (localPlayer != null && localPlayer.GetButtonDown(actionName)) return true;
+                return false;
+            }
+
+            // Keybind checks — early return on first match to avoid double-firing.
+            if (CheckToggleDown(_keyMasterToggle, "ToggleAllIcons"))  { HandleMasterToggle();                     return; }
+            if (CheckToggleDown(_keyToggleFriendly, "ToggleAllFriendlies")){ HandleFactionToggle(IconFaction.Friendly); return; }
+            if (CheckToggleDown(_keyToggleEnemy, "ToggleAllEnemies"))   { HandleFactionToggle(IconFaction.Enemy);    return; }
+            if (CheckToggleDown(_keyToggleNeutral, "ToggleAllNeutrals")) { HandleFactionToggle(IconFaction.Neutral);  return; }
+
+            string[] factions = { "Friendly", "Enemy", "Neutral" };
             for (int fi = 0; fi < 3; fi++)
                 for (int ci = 0; ci < 6; ci++)
-                    if (_catKeys[fi, ci].Value.IsDown())
+                    if (CheckToggleDown(_catKeys[fi, ci], $"Toggle{factions[fi]}{(IconCategory)ci}"))
                     {
                         HandleCategoryToggle(KeyFactions[fi], (IconCategory)ci);
                         return;
