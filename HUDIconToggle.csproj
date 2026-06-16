@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net472</TargetFramework>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>HUDIconToggle</AssemblyName>
     <RootNamespace>HUDIconToggle</RootNamespace>
     <Nullable>disable</Nullable>
@@ -13,49 +13,54 @@
 
     <!-- BepInEx -->
     <Reference Include="BepInEx">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\BepInEx\core\BepInEx.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\BepInEx.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="0Harmony">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\BepInEx\core\0Harmony.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\0Harmony.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <!-- Unity -->
     <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\UnityEngine.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\UnityEngine.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\UnityEngine.CoreModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\UnityEngine.UI.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\UnityEngine.UI.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.UIModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\UnityEngine.UIModule.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\UnityEngine.UIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\UnityEngine.IMGUIModule.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\UnityEngine.IMGUIModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <Reference Include="UnityEngine.SceneManagementModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\UnityEngine.SceneManagementModule.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\UnityEngine.SceneManagementModule.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
     <!-- Game -->
     <Reference Include="Assembly-CSharp">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Nuclear Option\NuclearOption_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <HintPath>..\..\modding\COMPILER_HERE\game\Assembly-CSharp.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+
+    <Reference Include="Rewired_Core">
+      <HintPath>..\..\modding\COMPILER_HERE\game\Rewired_Core.dll</HintPath>
       <Private>false</Private>
     </Reference>
 
